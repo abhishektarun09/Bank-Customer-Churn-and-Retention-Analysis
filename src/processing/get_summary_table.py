@@ -1,12 +1,10 @@
 import pandas as pd
 import numpy as np
-import time
 import sys
 
-from ingestion_to_db import ingest_db
-from src.logger import logging
-from src.exception import CustomException
-from src.postgres_session import get_postgres_connection
+from utils.logger import logging
+from utils.exception import CustomException
+from database.postgres_session import get_postgres_connection
 
 engine = get_postgres_connection()
 
@@ -89,24 +87,3 @@ def clean_data(df):
         
     except Exception as e:
         raise CustomException(e, sys)
-if __name__ == '__main__':
-    
-    start_time = time.time()
-    
-    logging.info("----------Creating Customer Summary Table----------")
-    summary_df = create_customer_summary(engine=engine)
-    logging.info(summary_df.head())
-    
-    logging.info("----------Cleaning Data----------")
-    clean_df = clean_data(df=summary_df)
-    logging.info(clean_df.head())
-    
-    logging.info("----------Ingesting data in database----------")
-    ingest_db(df=clean_df, table_name="customer_churn_summary", engine=engine)
-    logging.info("----------Ingestion completed----------")
-    
-    end_time = time.time()
-    
-    time_taken = (end_time - start_time)/60
-    
-    logging.info(f"Time taken {time_taken} minutes.")

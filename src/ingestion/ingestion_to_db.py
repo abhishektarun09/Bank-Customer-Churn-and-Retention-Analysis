@@ -4,9 +4,9 @@ import time
 import sys
 import pandas_gbq
 
-from src.logger import logging
-from src.exception import CustomException
-from src.postgres_session import get_postgres_connection
+from utils.logger import logging
+from utils.exception import CustomException
+from database.postgres_session import get_postgres_connection
 from google.oauth2 import service_account
 
 from dotenv import load_dotenv
@@ -49,8 +49,8 @@ def load_raw_data():
             if '.csv' in file:
                 df = pd.read_csv('data/'+file)
                 logging.info(f"Ingesting {file} in db.")
-                #ingest_db_postgres(df, file[:-4], engine)
-                ingest_db_gbq(df=df, table_name=f"{gbq_dataset}.{file[:-4]}", project_id=gbq_project_id, credentials=credentials)
+                ingest_db_postgres(df, file[:-4], engine)
+                #ingest_db_gbq(df=df, table_name=f"{gbq_dataset}.{file[:-4]}", project_id=gbq_project_id, credentials=credentials)
         end_time = time.time()
         logging.info("----------Ingestion Completed----------")
         total_time = (end_time - start_time)/60
@@ -58,6 +58,3 @@ def load_raw_data():
         
     except Exception as e:
         raise CustomException(e, sys)
-    
-if __name__ == '__main__':
-    load_raw_data()
