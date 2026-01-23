@@ -14,22 +14,25 @@ The bank is facing an increasing churn rate. To protect the bottom line, this an
 - FX Loyalty: Are customers holding domiciliary (USD/GBP/EUR) accounts more loyal and profitable than Nigerian Naira-only customers?
 
 ## Key Insights
-- Risk Profile: "Medium risk" customers are the most volatile, accounting for 51.7% of the total churned population.
-- There is a massive disparity in churn based on product ownership. Customers with Credit Cards have a churn rate of only 0.04%, while those without them churn at 53.93%. Promoting credit card adoption is the strongest driver of retention found in the data.
-- Activity vs. Tenure: Tenure (years) has almost no correlation with active usage. Old accounts are not necessarily "safe" accounts.
-- The Digital Paradox: The data suggests that digital adoption is NOT currently reducing churn.
-- Users who utilize all 3 digital channels (Mobile App, Internet Banking, and USSD) actually represent the highest volume of churned customers (over 94,000 users).
-- Foreign currency (FX) customers are significantly more profitable but much less loyal than Naira (NGN) customers.
-- USD customers maintain an average balance 19x higher than NGN customers.
-- Churn Rates: GBP (74.4%), USD (71.1%), and EUR (68.0%) all have significantly higher churn rates than NGN (53.6%).
-- Statistical Significance: A Chi-square test (p < 0.01) confirmed that currency type is a major factor in churn. FX customers churn roughly 20 percentage points more than local currency customers.
+1. The Baseline & Risk Profile
+    - Overall Churn Rate: The bank is experiencing a significant churn rate of 53.97%.
+    - Primary Risk Segment: High-risk customers are the most volatile, accounting for 18.31pp more on average than Medium and Low Risk Customers.
+    - The "Tenure" Myth: There is nearly zero correlation between account age (Tenure) and active usage. Older accounts are just as likely to churn as newer ones, suggesting that loyalty is not built over time alone.
 
-| Customer Segment | Churn Risk | Strategy |
-| :--- | :--- | :--- |
-| **FX / Domiciliary** | 🔴 Very High | High-value retention; these are profitable but highly "leakable." |
-| **Naira (NGN) Only** | 🟡 Moderate | Focus on cross-selling to increase friction. |
-| **Digital-Heavy Users** | 🟠 High | Introduce "human" touchpoints or loyalty rewards. |
-| **No Credit Card** | ⚫ Extremely High | **Primary Goal:** Convert these to Credit Card holders to "lock in" loyalty. |
+2. The "Stickiness" Factor: Credit Cards
+    - Massive Disparity: Customers with credit cards have a churn rate of only 0.04%, compared to 53.93% for those without.
+    - Projected Impact: Targeted promotion of credit cards to non-cardholders is estimated to reduce the overall churn rate.
+
+3. The Digital Paradox
+    - Negative Correlation: Contrary to expectations, higher digital adoption currently correlates with higher churn.
+    - Channel Fatigue: Customers utilizing all three digital channels (Mobile App, Internet Banking, and USSD) represent the highest volume of churn, with USSD-only accounts having highest churn.
+
+4. FX/Domiciliary Customer Volatility
+    - Profitability vs. Loyalty: Foreign Currency (FX) customers are the bank's most profitable yet most disloyal segment.
+    - Balance Disparity: USD account holders maintain an average balance 19x higher than local NGN customers.
+    - Attrition Rates: Churn is significantly higher in FX segments: GBP (74.4%), USD (71.1%), and EUR (68.0%), compared to NGN (53.6%).
+    - Statistical Proof: A Chi-Square test of independence (p < 0.01) confirmed that currency type is a statistically significant driver of churn.
+
 
 ## Dataset Overview
 - Source: The data-set was obtained from a multinational bank with branches in Nigeria and across Africa. It was generated in 2023.
@@ -65,6 +68,8 @@ Unlike a simple notebook-based analysis, this project follows a Modular Software
 - Analytics: SQL, Pandas, NumPy
 
 - Visualization: Seaborn, Matplotlib, Jupyter Notebook
+
+- Statistical Analysis: Chi-Square Test for Independence, Correlation Matrix Analysis
 
 <pre>
 CHURN_ANALYSIS/
