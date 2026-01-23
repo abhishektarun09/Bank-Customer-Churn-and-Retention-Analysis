@@ -71,8 +71,8 @@ CHURN_ANALYSIS/
 ├── data/                       # (Gitignored)
 ├── logs/                       # (Gitignored) Execution logs
 ├── notebooks/                  # Exploratory Data Analysis & Prototyping
-│   ├── 01_eda_demographics.ipynb
-│   ├── 02_feature_engineering.ipynb
+│   ├── 01_eda.ipynb
+│   ├── 02_customer_churn_analysis.ipynb
 ├── src/                        # Modular Python source code
 │   ├── __init__.py
 │   ├── database/               # Database connection logic
@@ -101,7 +101,7 @@ CHURN_ANALYSIS/
 2. Install dependencies: `pip install -r requirements.txt`
 3. Set up environment variables in `.env`.
 4. Run ingestion and data cleaning through ETL `python main.py`
-5. Explore results in `notebooks/`.
+5. Explore results in `notebooks/02_customer_churn_analysis.ipynb`.
 
 
 ## Contact
